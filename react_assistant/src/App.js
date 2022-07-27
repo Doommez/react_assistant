@@ -5,7 +5,9 @@ import React from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 import HomePage from './components/homePage/homePage';
 import Components from './components/components/components';
-
+import Props from './components/props/props'
+import logo from './logo.svg'
+import State from './components/state/state';
 
 const { Header, Content, Footer } = Layout;
 
@@ -24,15 +26,25 @@ const App = () =>{
         }}
       >
         <div className="logo" />
+        
         <Menu
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['1']}
-          items={menuArray.map((item, index) => ({
+          items={menuArray.map((item, index) => {
+            if(index===0){
+             return ({
+              key: String(index+1),
+              label: <Link to={`/Home`}><img src={logo} alt="Logo" className="App-logo"/></Link>
+             })
+            }
+            else return ({
             key: String(index + 1),
             label: <Link to={`/${item}`}>{item}</Link>,
-          }))}
+          })})}
+          
         />
+
       </Header>
       <Content
         className="site-layout"
@@ -60,6 +72,8 @@ const App = () =>{
           <Routes>
             <Route path="/Home" element={<HomePage/>}/>
             <Route path="/Components" element={<Components/>}/>
+            <Route path="/Props" element={<Props/>}/>
+            <Route path="/State" element={<State/>}/>
           </Routes>
         </div>
       </Content>
