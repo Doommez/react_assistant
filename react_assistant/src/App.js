@@ -8,6 +8,7 @@ import Components from './components/components/components';
 import Props from './components/props/props'
 import logo from './logo.svg'
 import State from './components/state/state';
+import Lifecycle from './components/lifecycle/lifecycle';
 
 const { Header, Content, Footer } = Layout;
 
@@ -74,6 +75,7 @@ const App = () =>{
             <Route path="/Components" element={<Components/>}/>
             <Route path="/Props" element={<Props/>}/>
             <Route path="/State" element={<State/>}/>
+            <Route path="/Lifecycle" element={<Lifecycle/>}/>
           </Routes>
         </div>
       </Content>

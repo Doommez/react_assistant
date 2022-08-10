@@ -12,6 +12,9 @@ h1{
   text-align: center;
   font-size: 35px;
 }
+h2{
+  text-align: center;
+}
 pre{
   border-radius: 10px;
   margin: 0;
