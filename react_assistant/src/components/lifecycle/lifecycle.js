@@ -3,7 +3,8 @@ import React from "react";
 
 
 const Lifecycle=()=>{
-
+ 
+ 
   return(
     <>
     <h1>Lifecycle</h1>
