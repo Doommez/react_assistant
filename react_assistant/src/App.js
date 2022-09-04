@@ -9,6 +9,9 @@ import Props from './components/props/props'
 import logo from './logo.svg'
 import State from './components/state/state';
 import Lifecycle from './components/lifecycle/lifecycle';
+import Event from './components/events/events';
+
+import Error from './components/errorBunder/errorBunder';
 
 const { Header, Content, Footer } = Layout;
 
@@ -70,13 +73,16 @@ const App = () =>{
             minHeight: 380,
           }}
         >
+          <Error>
           <Routes>
             <Route path="/Home" element={<HomePage/>}/>
             <Route path="/Components" element={<Components/>}/>
             <Route path="/Props" element={<Props/>}/>
             <Route path="/State" element={<State/>}/>
             <Route path="/Lifecycle" element={<Lifecycle/>}/>
-          </Routes>
+            <Route path="/Events" element={<Event onClick={()=>console.log("click")}/>}/>
+          </Routes> 
+          </Error>
         </div>
       </Content>
       <Footer
