@@ -13,6 +13,7 @@ import Event from './components/events/events';
 
 import Error from './components/errorBunder/errorBunder';
 import { useState} from 'react';
+import Keys from './components/keys/keys';
 
 const { Header, Content, Footer } = Layout;
 
@@ -96,6 +97,7 @@ const App = () =>{
             <Route path="/State" element={<State/>}/>
             <Route path="/Lifecycle" element={<Lifecycle/>}/>
             <Route path="/Events" element={<Event />}/>
+            <Route path="/Key" element={<Keys />}/>
           </Routes> 
           </Error>
         </div>
