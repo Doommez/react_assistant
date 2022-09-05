@@ -1,7 +1,7 @@
 import 'antd/dist/antd.min.css'
 import './App.css';
 import { /* Breadcrumb, */ Layout, Menu } from 'antd';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 import HomePage from './components/homePage/homePage';
 import Components from './components/components/components';
@@ -12,6 +12,7 @@ import Lifecycle from './components/lifecycle/lifecycle';
 import Event from './components/events/events';
 
 import Error from './components/errorBunder/errorBunder';
+import { useState} from 'react';
 
 const { Header, Content, Footer } = Layout;
 
@@ -20,6 +21,19 @@ const { Header, Content, Footer } = Layout;
 const App = () =>{
   let menuArray=["Home", "Components","Props","State","Lifecycle","Events","Key","Refs","Asynchronous requests",
   "Virtual DOM","Fragment","React.memo","useEffect","Router","Context","Form"]
+
+  const [href,setHref]=useState("1")
+  const changeHref=()=>{
+    menuArray.forEach((item,index)=>{
+      if(window.location.href==="http://localhost:3000/"+item){
+        setHref(index+1)
+      }
+    })
+  }
+
+
+  
+ 
   return (
     <Layout>
       <Header
@@ -34,8 +48,9 @@ const App = () =>{
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={href}
           items={menuArray.map((item, index) => {
+
             if(index===0){
              return ({
               key: String(index+1),
@@ -44,7 +59,7 @@ const App = () =>{
             }
             else return ({
             key: String(index + 1),
-            label: <Link to={`/${item}`}>{item}</Link>,
+            label: <Link to={`/${item}`} onClick={changeHref}>{item}</Link>,
           })})}
           
         />
@@ -80,7 +95,7 @@ const App = () =>{
             <Route path="/Props" element={<Props/>}/>
             <Route path="/State" element={<State/>}/>
             <Route path="/Lifecycle" element={<Lifecycle/>}/>
-            <Route path="/Events" element={<Event onClick={()=>console.log("click")}/>}/>
+            <Route path="/Events" element={<Event />}/>
           </Routes> 
           </Error>
         </div>
@@ -94,7 +109,7 @@ const App = () =>{
       </Footer>
     </Layout>
   );
-} 
+}
  
 export default App;
 
